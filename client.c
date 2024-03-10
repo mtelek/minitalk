@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtelek <mtelek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:10:34 by codespace         #+#    #+#             */
-/*   Updated: 2024/03/10 15:38:15 by mtelek           ###   ########.fr       */
+/*   Updated: 2024/03/10 20:54:59 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,21 @@ void	char_to_bin(char *message, int pid)
 	if (string[j])
 	{
 		if (string[j] & (1 << (7 - i)))
-			kill(pid, SIGUSR1);
+		{
+			if (kill(pid, SIGUSR1) == -1)
+			{
+				ft_printf("Error, not existing PID\n");
+				exit(EXIT_FAILURE);
+			}
+		}
 		else
-			kill(pid, SIGUSR2);
+		{
+			if (kill(pid, SIGUSR2) == -1)
+			{
+				ft_printf("Error, not existing PID\n");
+				exit(EXIT_FAILURE);
+			}
+		}
 		i++;
 	}
 	else
