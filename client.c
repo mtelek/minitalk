@@ -6,11 +6,31 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:10:34 by codespace         #+#    #+#             */
-/*   Updated: 2024/03/10 20:54:59 by codespace        ###   ########.fr       */
+/*   Updated: 2024/03/29 14:29:47 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+
+void	sig_sendler(int signum, int pid)
+{
+	if (signum == SIGUSR1)
+	{
+		if (kill(pid, SIGUSR1) == -1)
+		{
+			ft_printf("Error, not existing PID\n");
+			exit(EXIT_FAILURE);
+		}
+	}
+	if (signum == SIGUSR2)
+	{
+		if (kill(pid, SIGUSR2) == -1)
+		{
+			ft_printf("Error, not existing PID\n");
+			exit(EXIT_FAILURE);
+		}
+	}
+}
 
 void	terminator_strikes_back(char terminator, int pid)
 {
@@ -36,21 +56,9 @@ void	char_to_bin(char *message, int pid)
 	if (string[j])
 	{
 		if (string[j] & (1 << (7 - i)))
-		{
-			if (kill(pid, SIGUSR1) == -1)
-			{
-				ft_printf("Error, not existing PID\n");
-				exit(EXIT_FAILURE);
-			}
-		}
+			sig_sendler(SIGUSR1, pid);
 		else
-		{
-			if (kill(pid, SIGUSR2) == -1)
-			{
-				ft_printf("Error, not existing PID\n");
-				exit(EXIT_FAILURE);
-			}
-		}
+			sig_sendler(SIGUSR2, pid);
 		i++;
 	}
 	else
