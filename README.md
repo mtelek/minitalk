@@ -46,7 +46,7 @@ You can test the project using the [Minitalk-Tester](https://github.com/ThibaudM
 This tester helps verify the functionality and performance of the implementation of the project.  
 
 ### Tester
-<img src="Tester.png" width="500" />
+<img src="Utils_ReadME/Tester.png" width="500" />
 
 ### Server's output
-<img src="Server_output.gif" width="500" />
+<img src="Utils_ReadME/Server_output.gif" width="500" />
