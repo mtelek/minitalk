@@ -1,0 +1,30 @@
+# Object files
+*.o
+.objs/
+
+# Executables
+server
+client
+
+# Libraries
+libftprintf.a
+
+# Hidden files
+.DS_Store
+.vscode/
+
+# Compiled binaries
+*.out
+*.a
+
+# Debug files
+*.dSYM/
+
+# Environment files
+.env
+.env.local
+
+# Editor files
+*.swp
+*~
+*.swo
