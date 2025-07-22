@@ -1,6 +1,6 @@
 # Minitalk - UNIX Signal Communication
 
-[![Build Status](https://github.com/mtelek/minitalk/actions/workflows/build.yml/badge.svg?cache_buster=1)](https://github.com/mtelek/minitalk/actions)
+[![Build Status](https://github.com/mtelek/minitalk/actions/workflows/minitalk.yml/badge.svg?cache_buster=1)](https://github.com/mtelek/minitalk/actions)
 [![Code Size](https://img.shields.io/github/languages/code-size/mtelek/minitalk?style=flat-square)](https://github.com/mtelek/minitalk)
 ![Project Score](https://img.shields.io/badge/Mintalk-125%25-brightgreen)
 
