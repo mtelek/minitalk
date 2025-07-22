@@ -1,0 +1,37 @@
+name: Minitalk CI
+
+on: [push, pull_request]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Install dependencies
+      run: sudo apt-get update && sudo apt-get install -y build-essential
+      
+    - name: Build project
+      run: |
+        make
+        chmod +x client server
+        
+    - name: Run basic test
+      run: |
+        # Start server in background
+        ./server &
+        SERVER_PID=$!
+        sleep 2  # Wait for server to start
+        
+        # Test 1: Simple message
+        ./client $SERVER_PID "Hello Minitalk"
+        
+        # Test 2: Empty message
+        ./client $SERVER_PID ""
+        
+        # Test 3: Long message
+        ./client $SERVER_PID "$(printf '%1000s' ' ')"
+        
+        # Clean up
+        kill $SERVER_PID
